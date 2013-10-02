@@ -22,11 +22,11 @@ while true ; do
             shift 2
         ;;
         -h )
-            help
+            #help # Called below
             break
         ;;
         --help )
-            help
+            #help # Called below
             break
         ;;
         -q )
@@ -45,5 +45,11 @@ done;
 
 if [ $FILE ]; then
 	EXT="${FILE##*.}";
-	cat $FILE | sed -e "s/{query}/$QUERY/" > .tmp && $EXT .tmp && rm .tmp;
+	if [ $EXT ]; then
+		echo "Common batman, you need a file extension."
+	else
+		cat $FILE | sed -e "s/{query}/$QUERY/" > .tmp && $EXT .tmp && rm .tmp;
+	fi
+else
+	help
 fi
