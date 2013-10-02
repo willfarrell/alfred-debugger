@@ -7,8 +7,10 @@ A little script to help you write your Alfred Workflows.
 ```bash
 cp alfred.sh /usr/local/bin/alfred
 
-# Add to ~/.bashrc or Add /usr/local/bin to $PATH
-alias alfred=/usr/local/bin/alfred
+# Add `alias alfred=/usr/local/bin/alfred` to `~/.bashrc`
+# or
+# Add `/usr/local/bin` to `$PATH`
+
 ```
 
 ## Options
