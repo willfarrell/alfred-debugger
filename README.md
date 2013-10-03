@@ -14,8 +14,9 @@ cp alfred.sh /usr/local/bin/alfred
 
 ## Options
 ```bash
-alfred [options] [-f] <file> [-q] <query>
+alfred [options] [-c] <command> [-f] <file> [-q] <query>
 
+  -c  --command  The command to use (ex 'php or 'python')
   -f  --file     Filename of php file (ex 'script.php')
   -h  --help     Show help options (what you're viewing now)
   -q  --query    Value to replace {query} with
@@ -23,7 +24,7 @@ alfred [options] [-f] <file> [-q] <query>
 ```
 
 ## Running
-Just run `alfred -f <file> -q <query>`.
+Just run `alfred -c <command> -f <file> -q <query>`.
 
 ## Sample
 In Alfred create a `Script Filter` with the following code.
@@ -51,4 +52,4 @@ echo $w->toxml();
 ?>
 ```
 
-Open terminal to the open folder and run `$ alfred -f sample.php -q helloworld`. If all works ok you can be sure your Alfred Workflow will too. Go ahdea and try it out now, and have fun making new workflows.
+Open terminal to the open folder and run `$ alfred -c php -f sample.php -q helloworld`. If all works ok you can be sure your Alfred Workflow will too. Go ahdea and try it out now, and have fun making new workflows.
