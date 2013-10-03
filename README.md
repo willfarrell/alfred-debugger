@@ -23,7 +23,7 @@ alfred [options] [-f] <file> [-q] <query>
 ```
 
 ## Running
-Just run `alfred -c <command> -f <file> -q <query>`.
+Just run `alfred -f <file> -q <query>`.
 
 ## Sample
 In Alfred create a `Script Filter` with the following code.
