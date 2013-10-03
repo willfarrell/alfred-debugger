@@ -1,14 +1,21 @@
 #!/bin/bash
-VERSION="0.2";
+VERSION="0.3";
 
 function help() {
-    echo "alfred [options] [-c] <command> [-f] <file> [-q] <query>";
+    echo "alfred [options] [-f] <file> [-q] <query>";
     echo "";
-    echo "  -c  --command  The command to run your script (ex 'php or 'python')";
     echo "  -f  --file     Filename of php file (ex 'script.php')";
     echo "  -h  --help     Show help options (what you're viewing now)";
     echo "  -q  --query    Value to replace {query} with";
     echo "  -v  --version  Return version of script";
+}
+
+hput () {
+  eval hash"$1"='$2'
+}
+
+hget () {
+  eval echo '${hash'"$1"'#hash}'
 }
 
 FILE='';   # Filename from --file
@@ -16,16 +23,17 @@ QUERY='';  # String from --query
 OUTPUT=''; # 
 VERSION_STR="Version: $VERSION";
 
+# Supported Scripts
+hput bash bash
+hput sh zsh
+hput rb rudy
+hput php php
+hput py python
+hput pl perl
+hput scpt osascript
+
 while true ; do
     case "$1" in
-        -c )
-            COMMAND=$2
-            shift 2
-        ;;
-        --command )
-            COMMAND=$2
-            shift 2
-        ;;
         -f )
             FILE=$2
             shift 2
@@ -64,8 +72,15 @@ while true ; do
     esac 
 done;
 
-if [[ $FILE && $COMMAND ]]; then
-    cat $FILE | sed -e "s/{query}/$QUERY/" > .tmp && $COMMAND .tmp && rm .tmp;
+if [[ $FILE ]]; then
+    COMMAND=`hget "${FILE##*.}"`
+    if [[ $EXT ]]; then
+        echo "Common batman, you need a file extension."
+    elif [[ $COMMAND ]]; then
+        cat $FILE | sed -e "s/{query}/$QUERY/" > .tmp && $COMMAND .tmp && rm .tmp;
+    else
+        echo "That script isn't supported. Try .php, .pl, .py, .rb, or .scpt"
+    fi
 elif [[ $OUTPUT ]]; then
     echo $OUTPUT
 else
