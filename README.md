@@ -18,7 +18,7 @@ alfred [options] [-c] <command> [-f] <file> [-q] <query>
 
   -c  --command  The command to use (ex 'php' or 'python')
   -f  --file     Filename of php file (ex 'script.php')
-  -h  --help     Show help options (what you're viewing now)
+  -h  --help     Show help options (what you are viewing now)
   -q  --query    Value to replace {query} with
   -v  --version  Return version of script
 ```
