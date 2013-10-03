@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="0.3";
+VERSION="0.4";
 
 function help() {
     echo "alfred [options] [-f] <file> [-q] <query>";
@@ -73,8 +73,9 @@ while true ; do
 done;
 
 if [[ $FILE ]]; then
-    COMMAND=`hget "${FILE##*.}"`
-    if [[ $EXT ]]; then
+    EXT="${FILE##*.}";
+    COMMAND=`hget "$EXT"`
+    if [[ -z $EXT ]]; then
         echo "Common batman, you need a file extension."
     elif [[ $COMMAND ]]; then
         cat $FILE | sed -e "s/{query}/$QUERY/" > .tmp && $COMMAND .tmp && rm .tmp;
