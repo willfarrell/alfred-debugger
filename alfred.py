@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import argparse, subprocess, re, sys
 
-VERSION="0.1";
+VERSION="0.2";
 
 parser = argparse.ArgumentParser(description='''Execute a test''',)
 parser.add_argument('-c', '--command', type=str, required=True, help="The command to run your script (ex 'php or 'python')")
