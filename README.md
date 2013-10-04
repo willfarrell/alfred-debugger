@@ -6,6 +6,7 @@ A little script to help you write your Alfred Workflows. In the case your script
 ## Install
 ```bash
 cp alfred.sh /usr/local/bin/alfred
+chmod +x /usr/local/bin/alfred
 
 # Add `alias alfred=/usr/local/bin/alfred` to `~/.bashrc`
 # or
