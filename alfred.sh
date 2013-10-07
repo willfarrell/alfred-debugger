@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="0.4";
+VERSION="0.5";
 
 function help() {
     echo "alfred [options] [-f] <file> [-q] <query>";
@@ -78,6 +78,8 @@ if [[ $FILE ]]; then
     if [[ -z $EXT ]]; then
         echo "Common batman, you need a file extension."
     elif [[ $COMMAND ]]; then
+        # Escape $QUERY
+        QUERY=$(echo $QUERY | sed -e 's/\//\\\//g')
         cat $FILE | sed -e "s/{query}/$QUERY/" > .tmp && $COMMAND .tmp && rm .tmp;
     else
         echo "That script isn't supported. Try .php, .pl, .py, .rb, or .scpt"
