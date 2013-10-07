@@ -1,8 +1,9 @@
 #!/bin/bash
-VERSION="0.5";
+VERSION="0.6";
 
 function help() {
     echo "alfred [options] [-f] <file> [-q] <query>";
+    echo "alfred <file> <query>";
     echo "";
     echo "  -f  --file     Filename of php file (ex 'script.php')";
     echo "  -h  --help     Show help options (what you're viewing now)";
@@ -67,6 +68,12 @@ while true ; do
             break
         ;;
         *)
+            FILE=$1
+            if [[ $2 ]]; then
+                QUERY=$2
+                shift 1
+            fi
+            shift 1
             break
         ;;
     esac 

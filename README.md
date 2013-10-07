@@ -5,7 +5,7 @@ A little script to help you write your Alfred Workflows. In the case your script
 
 ## Install
 ```bash
-cp alfred.sh /usr/local/bin/alfred
+cp alfred /usr/local/bin/alfred
 chmod +x /usr/local/bin/alfred
 
 # Add `alias alfred=/usr/local/bin/alfred` to `~/.bashrc`
@@ -16,15 +16,16 @@ chmod +x /usr/local/bin/alfred
 ## Options
 ```bash
 alfred [options] [-f] <file> [-q] <query>
+alfred <file> <query>
 
   -f  --file     Filename of php file (ex 'script.php')
-  -h  --help     Show help options (what you are viewing now)
+  -h  --help     Show help options (what you're viewing now)
   -q  --query    Value to replace {query} with
   -v  --version  Return version of script
 ```
 
 ## Running
-Just run `alfred -f <file> -q <query>`.
+Just run `alfred <file> <query>`.
 
 ## Sample
 In Alfred create a `Script Filter` with the following code.
