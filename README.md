@@ -45,7 +45,11 @@ Right-click the workflow in Alfred, click `Show in Finder`. Create a new file `s
 require_once('workflows.php');
 $w = new Workflows();
 
-if (!isset($query)) { $query = urlencode("{query}"); }
+if (!isset($query)) {
+	$query = <<<EOD
+{query}
+EOD;
+}
 
 $w->result( 'debug', $query, "Your query was '$query'", '', 'icon.png', 'yes' );
 
